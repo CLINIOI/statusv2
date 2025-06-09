@@ -1,0 +1,81 @@
+@charset "UTF-8";
+@import "preset.scss";
+@import "main.scss";
+
+.services {
+  /*  background-color: $bac-color-w; */
+  color: $color-d;
+
+  h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: $color-d;
+  }
+
+  p {
+    color: $color-d;
+  }
+
+  .service-card {
+    background-color: $bac-color-w;
+    padding: 20px;
+    border-radius: $br15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .icon {
+      font-size: 3rem;
+      color: $color-accent;
+    }
+
+    h5 {
+      margin-bottom: 10px;
+      font-size: 1.25rem;
+    }
+
+    p {
+      font-size: 0.875rem;
+    }
+  }
+
+  .btn {
+    background-color: 0;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    background-color: $color-accent;
+    color: $color-w;
+    border-radius: $br15px;
+    &:hover {
+      background-color: $color-accent-act;
+    }
+  }
+}
+.service-card h5 {
+  position: relative;
+  display: inline-block; /* нужно, чтобы линия подстраивалась */
+}
+
+.service-card h5::after {
+  content: '';
+  position: absolute;
+  bottom: -5px; /* чуть ниже текста */
+  left: 50%;
+  width: 0;
+  height: 3px;
+  background-color: $color-accent; /* твой акцентный цвет */
+  transition: width 0.4s ease, left 0.4s ease;
+  border-radius: 50%;
+}
+
+.service-card:hover h5::after {
+  width: 100%;
+  left: 0;
+}

@@ -1,0 +1,125 @@
+@charset "UTF-8";
+@import "preset.scss";
+@import "main.scss";
+
+.swiper {
+  width: 100%;
+  height: 100%;
+ margin-top: 50px;
+ margin-bottom: 50px;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: $bac-color-w;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: grab;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.testimonials-section {
+  padding: 60px 0;
+  background-color: $bac-color-w;
+
+  .section-title {
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: $color-g;
+    margin-bottom: 10px;
+  }
+
+  .section-subtitle {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: $color-d;
+  }
+
+  .section-description {
+    font-size: 16px;
+    color: $color-g;
+  }
+
+  .testimonial-card {
+    background: #fff;
+    border-radius: 8px;
+    padding: 40px 20px 40px 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .testimonial-text {
+      font-size: 16px;
+      color: $color-d;
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+
+  .testimonial-author {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* если нужно, чтобы внутренности тоже были по центру */
+  width: max-content; /* или конкретную ширину, например 300px */
+  margin: 0 auto;
+  img{
+    display: none;
+  }
+
+
+
+      .author-photo {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        margin-right: 15px;
+      }
+
+      .author-name {
+        font-size: 14px;
+        font-weight: bold;
+        margin-bottom: 2px;
+      }
+
+      .author-role {
+        font-size: 12px;
+        color: $color-g;
+      }
+    }
+  }
+
+  .testimonial-pagination {
+    margin-top: 20px;
+
+    .dot {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      margin: 0 5px;
+      background-color: #ddd;
+      border-radius: 50%;
+      cursor: pointer;
+
+      &.active {
+        background-color: #4c7e57;
+      }
+    }
+  }
+}
+.swiper-pagination-bullet-active {
+    opacity: var(--swiper-pagination-bullet-opacity, 1);
+    background: $color-accent;
+}

@@ -1,0 +1,202 @@
+@charset "UTF-8";
+@import "preset.scss";
+@import "main.scss";
+
+.contact-section {
+
+  .contact-title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+    position: relative;
+    color: $color-d;
+
+    &::after {
+      content: "";
+      width: 60px;
+      height: 4px;
+      background: $color-accent;
+      display: block;
+      margin-top: 10px;
+    }
+  }
+
+  form {
+    input,
+    textarea {
+      border: 1px solid #f5f5f5;
+      padding: 10px;
+      font-size: 0.9rem;
+      border-radius: 4px;
+      &:focus {
+        outline: none;
+        border-color: $color-accent;
+        box-shadow: 0 0 5px rgba(255, 0, 0, 0.5);
+      }
+    }
+
+    button {
+      background-color: $color-accent;
+      border: none;
+      padding: 10px 20px;
+      color: $color-w;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+      border-radius: $br15px;
+      &:hover {
+        background-color: $color-accent-act;
+        color: $color-w;
+      }
+      /*   &:active {
+        background-color: $color-accent-act;
+      } */
+    }
+  }
+
+  img {
+    border-radius: 5px;
+    &:not(:last-child) {
+      margin-bottom: 10px;
+    }
+  }
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  }
+  .form-control {
+    background-color: #efefef;
+    border-radius: $br15px;
+  }
+}
+.contact-section form input:focus,
+.contact-section form textarea:focus {
+  outline: none;
+  border-color: rgb(255, 251, 0);
+  box-shadow: 0 0 5px rgba(70, 73, 27, 0.5);
+}
+.mode-btn {
+  margin-right: 5px;
+  padding: 10px 20px;
+  border: 1px solid #ccc;
+  /*  background-color: #f8f9fa; */
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+.mode-btn.active {
+  background-color: $color-accent;
+  color: #fff;
+  border-color: $color-accent;
+}
+.mode-btn:hover {
+  background-color: $color-accent-act;
+  color: #fff;
+}
+.block-content {
+  display: none;
+}
+.placeholder {
+  cursor: none;
+  background-color: #f8f9fa;
+  opacity: 1;
+}
+/* Скрываем на мобильных */
+@media (max-width: 767.98px) {
+  .not-mob {
+    display: none !important;
+  }
+}
+
+/* Адаптивное изображение (уже частично реализовано через Bootstrap) */
+.responsive-img {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  object-fit: contain;
+}
+/* ————— Оверлей ————— */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(2px);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeInOverlay 0.3s ease;
+}
+
+/* Плавное появление оверлея */
+@keyframes fadeInOverlay {
+  from { background: rgba(0, 0, 0, 0); }
+  to   { background: rgba(0, 0, 0, 0.6); }
+}
+
+/* ————— Окно модалки ————— */
+.modal-window {
+  background: #fff;
+  border-radius: 12px;
+  padding: 30px 25px;
+  max-width: 540px;
+  width: 90%;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  position: relative;
+  animation: scaleIn 0.25s ease;
+}
+
+/* Анимация появления окна */
+@keyframes scaleIn {
+  from { transform: scale(0.8); opacity: 0; }
+  to   { transform: scale(1);   opacity: 1; }
+}
+
+/* ————— Заголовок и иконка ————— */
+.modal-header {
+  margin-bottom: 20px;
+}
+.modal-icon {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 12px;
+}
+.modal-title {
+  font-size: 22px;
+  color: #333;
+  margin: 0;
+}
+
+/* ————— Текст внутри ————— */
+.modal-content {
+  line-height: 1.5;
+}
+.modal-text {
+  font-size: 16px;
+  color: #555;
+  margin: 12px 0;
+}
+
+/* ————— Крестик закрытия ————— */
+.modal-close {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  font-size: 24px;
+  color: #888;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.modal-close:hover {
+  color: #444;
+}
+.modal-window {
+  padding: 0;
+  margin: 0;
+  margin-left: 15px;
+  margin-right: 15px;
+}

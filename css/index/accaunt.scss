@@ -1,0 +1,35 @@
+@charset "UTF-8";
+@import "preset.scss";
+@import "main.scss";
+.container-ab {
+  width: max;
+
+  .social-grid {
+    .social-item {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 200px; // Фиксированная высота для квадратов
+      font-size: 4rem; // Размер иконок
+
+      // Расстояние между строками
+      transition: transform 0.3s, background-color 0.3s;
+
+      &.light {
+        background-color: $bac-color-w; // Светлый фон
+        color: $color-d; // Тёмный цвет иконок
+      }
+
+      &.dark {
+        background-color: $bac-color-d; // Тёмный фон
+        color: $color-w; // Светлый цвет иконок
+      }
+
+      &:hover {
+        transform: scale(1.1); // Увеличение при наведении
+        background-color: $color-accent-act; // Цвет при наведении
+        color: $color-w;
+      }
+    }
+  }
+}

@@ -1,0 +1,37 @@
+@charset "UTF-8";
+@import "preset.scss";
+@import "main.scss";
+
+.footer {
+  background-color: #1e1e1e;
+  color: #d1d1d1;
+
+  .fw-bold {
+    color: $color-accent;
+  }
+
+  a {
+    transition: color 0.3s;
+    &:hover {
+      color: #cccccc;
+    }
+  }
+
+  ul {
+    padding: 0;
+    list-style: none;
+  }
+
+  p,
+  a {
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+  }
+
+  h5 {
+    margin-bottom: 1rem;
+  }
+  .container-footer {
+    margin: 50px;
+  }
+}
