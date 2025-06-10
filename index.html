@@ -33,8 +33,8 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     />
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
-    
   <link rel="stylesheet" href="css/about_us.css" />
   <link rel="stylesheet" href="css/map.css" />
   <link rel="stylesheet" href="css/index.css" />
@@ -49,7 +49,7 @@
 </head>
 <body>
 
- <div class="hero-section" id="1">
+ <div data-aos="fade-down" class="hero-section" id="1">
   <div class="hero-content top_img">
     <h1 class="hero-title">
       Доверьтесь экспертам: ваш идеальный дом уже ждёт
@@ -64,7 +64,7 @@
 </div>
 
     
- <header class="site-header" id="siteHeader">
+ <header data-aos="fade-up" class="site-header" id="siteHeader">
     <div class="container">
       <!-- 1. ЛОГОТИП -->
       <a href="" class="logo">
@@ -98,13 +98,13 @@
     </div>
   </header>
 
-    <section class="services py-5 text-center" id="2">
+    <section  class="services py-5 text-center" id="2">
   <div class="container">
-    <h2 class="mb-3">Наши услуги</h2>
-    <p class="mb-4">
+    <h2 data-aos="fade-down" class="mb-3">Наши услуги</h2>
+    <p data-aos="fade-down" class="mb-4">
       Вы можете обратиться к нам за любой из указанных услуг
     </p>
-    <div class="row">
+    <div data-aos="fade-down" class="row">
       <div class="col-6 col-md-4 col-lg-3 mb-4">
         <div class="service-card">
           <div class="icon mb-3">
@@ -186,13 +186,13 @@
       </div>
     </div>
 
-    <h1 class="mt-4">
+    <h1 data-aos="fade-down" class="mt-4">
       Если здесь нет того, что вам нужно — это не значит, что мы не сможем помочь. Просто свяжитесь с нами!
     </h1>
   </div>
 </section>
 
-     <div class="container-ab py-4" id="3">
+     <div data-aos="fade-down" class="container-ab py-4" id="3">
       <div class="row social-grid">
         <div class="col social-item light">
           <i class="fab fa-facebook-f"></i>
@@ -216,10 +216,10 @@
     </div>
  <div class="container my-5" id="4">
   <div class="text-center">
-    <h1 class="text-uppercase text-secondary">Почему выбирают нас</h1>
-    <h2 class="mb-4">Наши преимущества</h2>
+    <h1 data-aos="fade-down" class="text-uppercase text-secondary">Почему выбирают нас</h1>
+    <h2 data-aos="fade-down" class="mb-4">Наши преимущества</h2>
   </div>
-  <div class="row g-4">
+  <div data-aos="fade-down" class="row g-4">
     <div class="col-6 col-md-4">
       <div class="offer-card">
         <div class="icon bg-primary text-white">
@@ -282,7 +282,7 @@
   </div>
 </div>
 
-    <div class="container-map container mt-5" id="5">
+    <div data-aos="fade-right" class="container-map container mt-5" id="5">
       <div class="row align-items-center">
         <!-- Информация о компании -->
         <div class="col-md-6">
@@ -325,7 +325,7 @@
       </div>
     </div>
     
-  <div class="container" id="6">
+  <div data-aos="fade-up" class="container" id="6">
   <div class="swiper mySwiper">
     <div class="swiper-wrapper">
 
@@ -540,7 +540,7 @@
   </div>
 </div>
 
-    <div class="contact-section container-map container my-5" id="7">
+    <div data-aos="fade-left" class="contact-section container-map container my-5" id="7">
   <div class="row">
     <div class="col-md-6 con-mob">
       <h2 class="contact-title">Напиши нам</h2>
@@ -837,7 +837,7 @@
 </div>
 
 
-  <footer class="footer bg-dark text-light py-5">
+  <footer data-aos="fade-up" class="footer bg-dark text-light py-5">
   <div class="container-footer">
     <div class="row">
       <div class="col-md-4">
@@ -1023,6 +1023,9 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 </script>
-
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init();
+</script>
 </body>
 </html>
