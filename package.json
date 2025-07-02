@@ -3,7 +3,30 @@
     "body-parser": "^2.2.0",
     "dotenv": "^16.5.0",
     "express": "^5.1.0",
-    "node-fetch": "^3.3.2",
+    "multer": "^2.0.1",
+    "node-fetch": "^2.7.0",
     "node-telegram-bot-api": "^0.66.0"
-  }
+  },
+  "name": "statusv2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CLINIOI/statusv2.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CLINIOI/statusv2/issues"
+  },
+  "homepage": "https://github.com/CLINIOI/statusv2#readme"
 }

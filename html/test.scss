@@ -1,0 +1,611 @@
+// Color & Dimension Variables
+$hero-bg-color:       #ffffff;
+$header-bg-color:     #ffffff;
+$sticky-header-height: 70px;
+$br15px:              15px;
+
+$color-w:             #ffffff;
+$color-d:             #1D1D1B;
+$color-g:             #6c757d;
+
+$color-w-hover:       #f0f0f0;
+$color-d-hover:       #333333;
+$color-g-hover:       #5a6268;
+
+$bac-color-w:         #f8f9fa;
+$bac-color-d:         #1D1D1B;
+
+$color-accent:        #E0B364;
+$color-accent-act:    #fdb63c;
+
+$shadow-color:        rgba(0, 0, 0, 0.1);
+
+// ==========================================
+// Student Card
+// ==========================================
+.student-card {
+  display: flex;
+  background-color: $color-w;
+  border-radius: $br15px;
+  overflow: hidden;
+
+  .images {
+    display: flex;
+    flex-direction: column;
+
+    img {
+      flex: 1;
+      object-fit: cover;
+      height: 100%;
+    }
+  }
+
+  .content {
+    padding: 2rem;
+
+    h2 {
+      font-size: 2rem;
+      color: $color-d;
+    }
+    p {
+      font-size: 1.125rem;
+      color: $color-d;
+    }
+  }
+
+  // Hover state (if card is interactive)
+  &:hover {
+    box-shadow: 0 8px 20px $shadow-color;
+  }
+}
+
+// Tablet & below: images row, text underneath
+@media (max-width: 767.98px) {
+  .student-card {
+    flex-direction: column !important;
+
+    .images {
+      flex-direction: row;
+
+      img {
+        flex: 1;
+        height: auto;
+      }
+    }
+  }
+}
+
+// Phone: smaller padding & fonts
+@media (max-width: 575.98px) {
+  .student-card {
+    .content {
+      padding: 1.5rem !important;
+
+      h2 {
+        font-size: 1.5rem;
+      }
+      p {
+        font-size: 1rem;
+      }
+    }
+  }
+}
+
+
+// ==========================================
+// Catalog Items
+// ==========================================
+.catalog {
+  .catalog-item {
+    display: flex;
+    background-color: $color-w;
+    border-radius: $br15px;
+    overflow: hidden;
+    transition: transform .2s, box-shadow .2s;
+    
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 20px $shadow-color;
+    }
+
+    .image {
+      flex: 1;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    .content {
+      flex: 2;
+      padding: 1.5rem;
+
+      h3 {
+        font-size: 1.75rem;
+        font-weight: 500;
+        color: $color-d;
+      }
+      ul {
+        margin: 0.5rem 0;
+        li {
+          font-size: 1rem;
+          color: $color-g;
+          margin-bottom: .25rem;
+        }
+      }
+      .btn {
+        display: inline-block;
+        font-size: 1rem;
+        padding: .5rem 1.25rem;
+        background-color: $color-accent;
+        color: $color-w;
+        border-radius: $br15px / 2;
+        text-decoration: none;
+
+        &:hover {
+          background-color: $color-accent-act;
+        }
+      }
+    }
+  }
+
+  // Tablet & below: stack image above content
+  @media (max-width: 767.98px) {
+    .catalog-item {
+      flex-direction: column;
+
+      .image {
+        width: 100%;
+        height: 200px;
+        margin-bottom: 1rem;
+      }
+
+      .content {
+        padding-left: 1rem !important;
+      }
+    }
+  }
+
+  // Phone: smaller spacing & fonts
+  @media (max-width: 575.98px) {
+    .catalog-item {
+      padding: 1rem !important;
+
+      .content {
+        h3 { font-size: 1.5rem; }
+        ul li { font-size: .9rem; }
+        .btn { font-size: .9rem; padding: .4rem 1rem; }
+      }
+    }
+  }
+}
+
+
+// ==========================================
+// Modal Styles
+// ==========================================
+.modal-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 1rem;
+  background-color: rgba($color-d, 0.5);
+}
+
+.modal-card {
+  position: relative;
+  background-color: $color-w;
+  border-radius: 24px;
+  overflow: hidden;
+  width: 90%;
+  max-width: 600px;
+  box-shadow: 0 8px 20px $shadow-color;
+
+  .close-btn {
+    position: absolute;
+    top: 16px; right: 16px;
+    background: rgba($color-d, 0.1);
+    border: none;
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    color: $color-d;
+    font-size: 1.25rem;
+    cursor: pointer;
+    z-index: 2000;
+
+    &:hover {
+      background: rgba($color-d, 0.2);
+    }
+  }
+
+.image-wrapper {
+  height: 400px;
+  overflow: hidden;
+
+  .top-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; // изменено с cover
+    object-position: center;
+    display: block;
+  }
+}
+
+  .content {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    h2 {
+      font-size: 1.75rem;
+      color: $color-d;
+    }
+    .price {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: $color-accent;
+    }
+
+    .description {
+      font-size: 1rem;
+      color: $color-g;
+      line-height: 1.4;
+    }
+
+    .details-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.5rem 1rem;
+
+      div {
+        font-size: 0.95rem;
+        color: $color-d;
+
+        strong {
+          color: $color-d;
+        }
+      }
+    }
+
+    .map-block {
+      height: 200px;
+      background-color: $color-accent;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: $color-w;
+      font-weight: bold;
+      font-size: 1rem;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 1rem;
+
+      button {
+        flex: 1;
+        background-color: $color-accent;
+        color: $color-w;
+        border: none;
+        border-radius: 8px;
+        padding: 0.75rem 0;
+        cursor: pointer;
+
+        &:hover {
+          background-color: $color-accent-act;
+        }
+      }
+    }
+  }
+
+  // Tablet: stack buttons
+  @media (max-width: 767.98px) {
+    .buttons {
+      flex-direction: column;
+    }
+  }
+
+  // Phone: adjust sizes
+  @media (max-width: 575.98px) {
+    .image-wrapper { height: 200px; }
+    .content {
+      padding: 1rem;
+
+      h2 { font-size: 1.5rem; }
+      .price { font-size: 1.25rem; }
+      .description { font-size: 0.9rem; }
+      .details-grid {
+        grid-template-columns: 1fr;
+        gap: 0.25rem 0;
+      }
+      .map-block {
+        height: 150px;
+        font-size: 0.9rem;
+      }
+      .buttons button {
+        font-size: 0.9rem;
+        padding: 0.6rem 0;
+      }
+    }
+  }
+}
+
+
+// ==========================================
+// Filter Panel
+// ==========================================
+.filter-block {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+ 
+  background-color: $bac-color-w;
+}
+
+.filter-panel {
+  background-color: $color-w;
+  border-radius: 24px;
+  box-shadow: 0 8px 20px $shadow-color;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+
+  .filter-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-align: center;
+    color: $color-d;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    .form-label {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: $color-d;
+    }
+    .form-control,
+    .form-select {
+      font-size: 0.95rem;
+      padding: 0.5rem;
+      border: 1px solid $color-g;
+      border-radius: $br15px / 2;
+      color: $color-d;
+    }
+
+    .checkbox-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 1rem;
+
+      .form-check {
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+
+        .form-check-input {
+          width: 1rem;
+          height: 1rem;
+          accent-color: $color-accent;
+          cursor: pointer;
+        }
+        .form-check-label {
+          font-size: 0.9rem;
+          color: $color-d;
+          cursor: pointer;
+        }
+      }
+    }
+
+    &.d-flex input[type="date"] {
+      max-width: 48%;
+    }
+  }
+
+  // noUiSlider Customization
+  .slider {
+    margin: 0.5rem 0;
+
+    .noUi-base {
+      height: 6px;
+      background: $bac-color-w;
+    }
+    .noUi-connect {
+      background: $color-accent;
+    }
+    .noUi-handle {
+      width: 18px;
+      height: 18px;
+      border: 2px solid $color-accent;
+      background: $color-w;
+      border-radius: 50%;
+      box-shadow: 0 2px 6px $shadow-color;
+      top: -6px;
+      cursor: grab;
+    }
+    .noUi-tooltip {
+      font-size: 0.85rem;
+      background: $color-accent;
+      color: $color-w;
+      border-radius: 4px;
+      padding: 0.25rem 0.5rem;
+    }
+  }
+
+  .btn {
+    padding: 0.7rem 0;
+    font-size: 1rem;
+    border-radius: 8px;
+    background-color: $color-accent;
+    color: $color-w;
+    text-align: center;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $color-accent-act;
+    }
+  }
+}
+
+// Responsive tweaks for Filter Panel
+@media (max-width: 767.98px) {
+  .filter-panel {
+    padding: 1.5rem;
+  }
+}
+@media (max-width: 575.98px) {
+  .filter-block {
+  
+  }
+  .filter-panel {
+  
+
+    .filter-title {
+      font-size: 1.2rem;
+    }
+    .form-control,
+    .form-select {
+      font-size: 0.9rem;
+    }
+    .noUi-tooltip {
+      font-size: 0.8rem;
+    }
+    .btn {
+      font-size: 0.9rem;
+    }
+  }
+}
+  /* Стили для модалки */
+    .modal-wrapper {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.5);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1050;
+    }
+    .modal-card {
+      background: #fff;
+      border-radius: .5rem;
+      max-width: 800px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      position: relative;
+    }
+    .close-btn {
+      position: absolute;
+      top: .5rem; right: .75rem;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      line-height: 1;
+      cursor: pointer;
+    }
+    .image-wrapper .top-image {
+      width: 100%;
+      border-top-left-radius: .5rem;
+      border-top-right-radius: .5rem;
+      object-fit: cover;
+      max-height: 300px;
+    }
+    .details-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: .75rem 1.5rem;
+    }
+    .map-block {
+      background: #eee;
+      text-align: center;
+      padding: 2rem;
+      border-radius: .25rem;
+    }// Модальное окно
+.modal-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: none;
+  overflow-y: auto; // добавляем вертикальную прокрутку
+  align-items: flex-start; // выравниваем сверху для скролла
+  justify-content: center;
+  padding: 2rem 0; // отступы сверху и снизу
+  z-index: 1050;
+}
+
+.modal-card {
+  background: #fff;
+  border-radius: 0.5rem;
+  max-width: 800px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto; // внутренняя прокрутка содержимого
+  position: relative;
+}
+
+.close-btn {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.75rem;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+// Фильтр
+.filter-block {
+ 
+}
+
+.filter-panel {
+  background: #fff;
+ 
+  border-radius: 0.5rem;
+  // обеспечиваем, что панель растягивается в пределах модалки
+  width: 100%;
+}
+
+.filter-title {
+  margin-bottom: 1rem;
+}
+
+// Слайдеры
+.slider {
+  margin-top: 0.5rem;
+}
+.swiper{
+  max-height: 400px;
+}.separator {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: #1D1D1B; // или любой твой основной цвет текста
+
+  &::before,
+  &::after {
+    content: "";
+    flex: 1;
+    border-bottom: 2px solid #1D1D1B; // цвет линии
+    margin: 0 10px;
+  }
+}
+.justify-content-between{ color: #1D1D1B; 
+    font-weight: bold;
+}

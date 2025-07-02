@@ -1,0 +1,5 @@
+PassengerAppRoot /home/a1139483/domains/statusdnr.ru/public_html
+PassengerStartupFile server.js
+PassengerAppType node
+Options -MultiViews
+Require all granted

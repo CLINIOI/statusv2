@@ -1,0 +1,23 @@
+body {
+  background-color: #f8f9fa;
+  font-family: Arial, sans-serif;
+}
+
+.card-custom {
+  border-radius: 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.form-label {
+  font-weight: bold;
+  color: #6c757d;
+}
+
+.btn-primary-custom {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+.btn-primary-custom:hover {
+  background-color: #0062cc;
+  border-color: #0062cc;
+}/*# sourceMappingURL=realty_main.css.map */

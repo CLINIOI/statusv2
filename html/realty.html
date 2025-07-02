@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Форма недвижимости</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <!-- SCSS Styles -->
+  <link rel="stylesheet" href="css/realty_main.css">
+  <style>
+    /* Стиль для карты */
+    #map {
+      width: 100%;
+      height: 300px;
+      margin-top: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Login Section -->
+  <div id="loginSection" class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card card-custom p-4">
+          <h3 class="text-center mb-4">Вход</h3>
+          <div class="mb-3">
+            <label for="passwordInput" class="form-label">Пароль</label>
+            <input type="password" id="passwordInput" class="form-control" placeholder="Введите пароль">
+          </div>
+          <div class="form-check mb-3">
+            <input class="form-check-input" type="checkbox" id="rememberDevice">
+            <label class="form-check-label" for="rememberDevice">Запомнить это устройство</label>
+          </div>
+          <button id="loginButton" class="btn btn-primary btn-primary-custom w-100">Войти</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Property Form Section -->
+  <div id="propertySection" class="container mt-5 d-none">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="card card-custom p-4">
+          <h3 class="text-center mb-4">Информация об объекте на Авито</h3>
+          <form id="propertyForm" enctype="multipart/form-data">
+            <!-- скрытое поле для полного адреса -->
+            <input type="hidden" id="fullAddress" name="address">
+
+            <!-- другие поля формы -->
+            <div class="row">
+              <div class="mb-3 col-md-6">
+                <label for="dealType" class="form-label">Тип объявления</label>
+                <select id="dealType" name="dealType" class="form-select">
+                  <option value="sale">Продажа</option>
+                  <option value="rent">Аренда</option>
+                </select>
+              </div>
+              <div class="mb-3 col-md-6">
+                <label for="propertyType" class="form-label">Тип объекта</label>
+                <select id="propertyType" name="propertyType" class="form-select">
+                  <option value="Квартира">Квартира</option>
+                  <option value="Комната">Комната</option>
+                  <option value="Дом">Дом</option>
+                  <option value="Участок">Участок</option>
+                  <option value="Гараж">Гараж</option>
+                  <option value="Коммерческая недвижимость">Коммерческая недвижимость</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="title" class="form-label">Заголовок</label>
+              <input type="text" id="title" name="title" class="form-control" placeholder="Например, Уютная квартира">
+            </div>
+
+            <div class="row">
+              <div class="mb-3 col-md-4">
+                <label for="currency" class="form-label">Валюта</label>
+                <select id="currency" name="currency" class="form-select">
+                  <option value="RUB">₽</option>
+                  <option value="USD">$</option>
+                </select>
+              </div>
+              <div class="mb-3 col-md-8">
+                <label for="price" class="form-label">Цена</label>
+                <input type="number" id="price" name="price" class="form-control" placeholder="Введите сумму">
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="mb-3 col-md-6">
+                <label for="city" class="form-label">Город</label>
+                <input type="text" id="city" name="city" class="form-control" placeholder="Например, Донецк">
+              </div>
+              <div class="mb-3 col-md-6">
+                <label for="district" class="form-label">Район</label>
+                <input type="text" id="district" name="district" class="form-control" placeholder="Например, Ворошиловский">
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="address" class="form-label">Адрес (улица, дом)</label>
+              <input type="text" id="address" class="form-control" placeholder="Улица, дом">
+              <div id="map"></div>
+            </div>
+
+            <!-- остальные поля -->
+            <div class="row">
+              <div class="mb-3 col-md-3">
+                <label for="rooms" class="form-label">Комнат</label>
+                <input type="number" id="rooms" name="rooms" class="form-control" placeholder="3">
+              </div>
+              <div class="mb-3 col-md-3">
+                <label for="floor" class="form-label">Этаж</label>
+                <input type="number" id="floor" name="floor" class="form-control" placeholder="2">
+              </div>
+              <div class="mb-3 col-md-3">
+                <label for="totalFloors" class="form-label">Этажей в доме</label>
+                <input type="number" id="totalFloors" name="totalFloors" class="form-control" placeholder="5">
+              </div>
+              <div class="mb-3 col-md-3">
+                <label for="areaTotal" class="form-label">Площадь (м²)</label>
+                <input type="number" id="areaTotal" name="areaTotal" class="form-control" placeholder="45">
+              </div>
+            </div>
+            <div class="row">
+              <div class="mb-3 col-md-4">
+                <label for="areaLiving" class="form-label">Жилая (м²)</label>
+                <input type="number" id="areaLiving" name="areaLiving" class="form-control" placeholder="30">
+              </div>
+              <div class="mb-3 col-md-4">
+                <label for="areaKitchen" class="form-label">Кухня (м²)</label>
+                <input type="number" id="areaKitchen" name="areaKitchen" class="form-control" placeholder="10">
+              </div>
+              <div class="mb-3 col-md-4">
+                <label for="bathroomType" class="form-label">Санузел</label>
+                <select id="bathroomType" name="bathroomType" class="form-select">
+                  <option value="Совмещенный">Совмещенный</option>
+                  <option value="Раздельный">Раздельный</option>
+                </select>
+              </div>
+            </div>
+            <div class="row">
+              <div class="mb-3 col-md-4">
+                <label for="balcony" class="form-label">Балкон/лоджия</label>
+                <select id="balcony" name="balcony" class="form-select">
+                  <option value="Нет">Нет</option>
+                  <option value="Балкон">Балкон</option>
+                  <option value="Лоджия">Лоджия</option>
+                </select>
+              </div>
+              <div class="mb-3 col-md-8">
+                <label for="repair" class="form-label">Ремонт</label>
+                <select id="repair" name="repair" class="form-select">
+                  <option value="Без ремонта">Без ремонта</option>
+                  <option value="Косметический">Косметический</option>
+                  <option value="Евроремонт">Евроремонт</option>
+                  <option value="Дизайнерский">Дизайнерский</option>
+                </select>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="description" class="form-label">Описание</label>
+              <textarea id="description" name="description" class="form-control" rows="4" placeholder="Подробнее о вашем объекте..."></textarea>
+            </div>
+            <div class="mb-3">
+              <label for="images" class="form-label">Загрузить изображения</label>
+              <input type="file" id="images" name="images" class="form-control" accept="image/*" multiple>
+            </div>
+            <button type="submit" class="btn btn-primary btn-primary-custom w-100">Отправить</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script>
+    const PASSWORD = '1234';
+    const loginSection = document.getElementById('loginSection');
+    const propertySection = document.getElementById('propertySection');
+    document.addEventListener('DOMContentLoaded', () => {
+      if (localStorage.getItem('rememberDevice') === 'true') {
+        loginSection.classList.add('d-none');
+        propertySection.classList.remove('d-none');
+      }
+      const map = L.map('map').setView([55.751244, 37.618423], 10);
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://openstreetmap.org">OpenStreetMap</a> contributors'
+      }).addTo(map);
+      let marker;
+      const addressInput = document.getElementById('address');
+      const fullAddressInput = document.getElementById('fullAddress');
+      let debounce;
+      addressInput.addEventListener('input', () => {
+        clearTimeout(debounce);
+        debounce = setTimeout(() => {
+          const query = addressInput.value.trim();
+          if (query.length > 3) {
+            fetch(`https://nominatim.openstreetmap.org/search?format=json&addressdetails=1&q=${encodeURIComponent(query)}`)
+              .then(res => res.json())
+              .then(data => {
+                if (data && data.length > 0) {
+                  const place = data[0];
+                  const {lat, lon, address} = place;
+                  map.setView([lat, lon], 15);
+                  if (marker) marker.setLatLng([lat, lon]); else marker = L.marker([lat, lon]).addTo(map);
+
+                  // Формируем строку полного адреса
+              
+                  const cityName = address.city || address.town || address.village || '';
+                  const city = cityName ? `${cityName}` : '';
+                  const street = address.road ? `${address.road}` : '';
+                  const house = address.house_number ? `${address.house_number}` : '';
+                  const formatted = [city, street, house].filter(Boolean).join(', ');
+
+                  // Обновляем отображение и скрытое поле
+                  addressInput.value = formatted;
+                  fullAddressInput.value = formatted;
+                }
+              })
+              .catch(err => console.error('Geocoding error:', err));
+          }
+        }, 600);
+      });
+    });
+    document.getElementById('loginButton').addEventListener('click', () => {
+      const input = document.getElementById('passwordInput').value;
+      const remember = document.getElementById('rememberDevice').checked;
+      if (input === PASSWORD) {
+        if (remember) localStorage.setItem('rememberDevice', 'true');
+        loginSection.classList.add('d-none');
+        propertySection.classList.remove('d-none');
+      } else alert('Неверный пароль');
+    });
+    document.getElementById('propertyForm').addEventListener('submit', async e => {
+      e.preventDefault();
+      const formData = new FormData(e.target);
+      const res = await fetch('/submit', { method: 'POST', body: formData });
+      if (res.ok) { alert('Данные успешно сохранены!'); e.target.reset(); }
+      else { alert('Ошибка при сохранении данных'); }
+    });
+  </script>
+</body>
+</html>

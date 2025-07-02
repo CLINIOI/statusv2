@@ -1,0 +1,492 @@
+[
+  {
+    "id": 1750769442591,
+    "dealType": "sale",
+    "propertyType": "Квартира",
+    "title": "цуке",
+    "currency": "USD",
+    "price": 333567,
+    "location": {
+      "city": "укерк",
+      "district": "цкер",
+      "address": "укек"
+    },
+    "specs": {
+      "rooms": 0,
+      "floor": 0,
+      "totalFloors": 0,
+      "area": {
+        "total": 0,
+        "living": 0,
+        "kitchen": 0
+      },
+      "bathroomType": "Совмещенный",
+      "balcony": "Балкон",
+      "repair": "Без ремонта"
+    },
+    "description": "уцекнекнлгнорпвыврекруекрукр",
+    "images": [
+      "data\\images\\images-1750769442582-53109552.png"
+    ],
+    "createdAt": "2025-06-24T12:50:42.591Z"
+  },
+  {
+    "id": 1750771011511,
+    "dealType": "sale",
+    "propertyType": "Квартира",
+    "title": "er",
+    "currency": "RUB",
+    "price": 332333333,
+    "location": {
+      "city": "354",
+      "district": "2532",
+      "address": "5325235235235"
+    },
+    "specs": {
+      "rooms": 333,
+      "floor": 3333,
+      "totalFloors": 33,
+      "area": {
+        "total": 33,
+        "living": 333,
+        "kitchen": 333
+      },
+      "bathroomType": "Раздельный",
+      "balcony": false,
+      "repair": "Косметический"
+    },
+    "description": "3525",
+    "images": [
+      "data/images/images-1750771011470-865712263.png",
+      "data/images/images-1750771011475-914895263.png",
+      "data/images/images-1750771011477-396125236.png",
+      "data/images/images-1750771011501-180889920.png",
+      "data/images/images-1750771011506-53079161.png",
+      "data/images/images-1750771011506-324714117.png"
+    ],
+    "createdAt": "2025-06-24T13:16:51.511Z"
+  },
+  {
+    "id": 1750952225433,
+    "dealType": "rent",
+    "propertyType": "Дом",
+    "title": "er",
+    "currency": "RUB",
+    "price": 332,
+    "location": {
+      "city": "354",
+      "district": "2532",
+      "address": "январская 21 донецк"
+    },
+    "specs": {
+      "rooms": 333,
+      "floor": 3333,
+      "totalFloors": 33,
+      "area": {
+        "total": 33,
+        "living": 333,
+        "kitchen": 333
+      },
+      "bathroomType": "Раздельный",
+      "balcony": false,
+      "repair": "Евроремонт"
+    },
+    "description": "впрыфаоыфа фыиаф  shafksa skasf aks f впрыфаоыфа фыиаф  shafksa skasf aks fвпрыфаоыфа фыиаф  shafksa skasf aks fвпрыфаоыфа фыиаф  shafksa skasf aks fвпрыфаоыфа фыиаф  shafksa skasf aks fвпрыфаоыфа фыиаф  shafksa skasf aks fвпрыфаоыфа фыиаф  shafksa skasf aks fвпрыфаоыфа фыиаф  shafksa skasf aks fвпрыфаоыфа фыиаф  shafksa skasf aks fвпрыфаоыфа фыиаф  shafksa skasf aks fвпрыфаоыфа фыиаф  shafksa skasf aks fвпрыфаоыфа фыиаф  shafksa skasf aks f",
+    "images": [
+      "data/images/images-1750952225388-969148529.jpg",
+      "data/images/images-1750952225391-663928291.jpg",
+      "data/images/images-1750952225398-850538913.jpg",
+      "data/images/images-1750952225398-436439767.jpg",
+      "data/images/images-1750952225409-474302508.jpg",
+      "data/images/images-1750952225410-871190165.jpg",
+      "data/images/images-1750952225411-778919384.jpg",
+      "data/images/images-1750952225411-767753466.jpg",
+      "data/images/images-1750952225414-539966528.jpg",
+      "data/images/images-1750952225415-921876268.jpg",
+      "data/images/images-1750952225415-123015818.jpg",
+      "data/images/images-1750952225417-810405282.jpg",
+      "data/images/images-1750952225427-411603179.jpg"
+    ],
+    "createdAt": "2025-06-26T15:37:05.433Z"
+  },
+  {
+    "id": 1750952578552,
+    "dealType": "sale",
+    "propertyType": "Квартира",
+    "title": "er",
+    "currency": "RUB",
+    "price": 332,
+    "location": {
+      "city": "",
+      "district": "",
+      "address": "январская 21 донецк"
+    },
+    "specs": {
+      "rooms": 333,
+      "floor": 3333,
+      "totalFloors": 33,
+      "area": {
+        "total": 33,
+        "living": 333,
+        "kitchen": 333
+      },
+      "bathroomType": "Совмещенный",
+      "balcony": false,
+      "repair": "Без ремонта"
+    },
+    "description": "",
+    "images": [],
+    "createdAt": "2025-06-26T15:42:58.553Z"
+  },
+  {
+    "id": 1750952589685,
+    "dealType": "sale",
+    "propertyType": "Квартира",
+    "title": "er",
+    "currency": "RUB",
+    "price": 332,
+    "location": {
+      "city": "",
+      "district": "",
+      "address": "респ. Донецкая область, г. Донецк, ул. Январская улица, д. 21"
+    },
+    "specs": {
+      "rooms": 333,
+      "floor": 3333,
+      "totalFloors": 33,
+      "area": {
+        "total": 33,
+        "living": 333,
+        "kitchen": 333
+      },
+      "bathroomType": "Совмещенный",
+      "balcony": false,
+      "repair": "Без ремонта"
+    },
+    "description": "",
+    "images": [],
+    "createdAt": "2025-06-26T15:43:09.685Z"
+  },
+  {
+    "id": 1750956051000,
+    "dealType": "sale",
+    "propertyType": "Квартира",
+    "title": "",
+    "currency": "RUB",
+    "price": null,
+    "location": {
+      "city": "",
+      "district": "",
+      "address": ""
+    },
+    "specs": {
+      "rooms": null,
+      "floor": null,
+      "totalFloors": null,
+      "area": {
+        "total": null,
+        "living": null,
+        "kitchen": null
+      },
+      "bathroomType": "Совмещенный",
+      "balcony": false,
+      "repair": "Без ремонта"
+    },
+    "description": "",
+    "images": [],
+    "createdAt": "2025-06-26T16:40:51.000Z"
+  },
+  {
+    "id": 1750956122189,
+    "dealType": "sale",
+    "propertyType": "Квартира",
+    "title": "",
+    "currency": "RUB",
+    "price": null,
+    "location": {
+      "city": "",
+      "district": "",
+      "address": ""
+    },
+    "specs": {
+      "rooms": null,
+      "floor": null,
+      "totalFloors": null,
+      "area": {
+        "total": null,
+        "living": null,
+        "kitchen": null
+      },
+      "bathroomType": "Совмещенный",
+      "balcony": false,
+      "repair": "Без ремонта"
+    },
+    "description": "",
+    "images": [],
+    "createdAt": "2025-06-26T16:42:02.189Z"
+  },
+  {
+    "id": 1750956176760,
+    "dealType": "sale",
+    "propertyType": "Дом",
+    "title": "Курсовая, Дипломная, Студенческие работы",
+    "currency": "RUB",
+    "price": 900,
+    "location": {
+      "city": "",
+      "district": "",
+      "address": ""
+    },
+    "specs": {
+      "rooms": 4,
+      "floor": 4,
+      "totalFloors": 2,
+      "area": {
+        "total": 11,
+        "living": 1313,
+        "kitchen": 13
+      },
+      "bathroomType": "Раздельный",
+      "balcony": false,
+      "repair": "Евроремонт"
+    },
+    "description": "вап",
+    "images": [],
+    "createdAt": "2025-06-26T16:42:56.760Z"
+  },
+  {
+    "id": 1750956202448,
+    "dealType": "sale",
+    "propertyType": "Квартира",
+    "title": "",
+    "currency": "RUB",
+    "price": null,
+    "location": {
+      "city": "",
+      "district": "",
+      "address": ""
+    },
+    "specs": {
+      "rooms": null,
+      "floor": null,
+      "totalFloors": null,
+      "area": {
+        "total": null,
+        "living": null,
+        "kitchen": null
+      },
+      "bathroomType": "Совмещенный",
+      "balcony": false,
+      "repair": "Без ремонта"
+    },
+    "description": "",
+    "images": [],
+    "createdAt": "2025-06-26T16:43:22.448Z"
+  },
+  {
+    "id": 1750956219431,
+    "dealType": "sale",
+    "propertyType": "Квартира",
+    "title": "",
+    "currency": "RUB",
+    "price": null,
+    "location": {
+      "city": "",
+      "district": "",
+      "address": ""
+    },
+    "specs": {
+      "rooms": null,
+      "floor": null,
+      "totalFloors": null,
+      "area": {
+        "total": null,
+        "living": null,
+        "kitchen": null
+      },
+      "bathroomType": "Совмещенный",
+      "balcony": false,
+      "repair": "Без ремонта"
+    },
+    "description": "",
+    "images": [],
+    "createdAt": "2025-06-26T16:43:39.431Z"
+  },
+  {
+    "id": 1750956233174,
+    "dealType": "sale",
+    "propertyType": "Квартира",
+    "title": "",
+    "currency": "RUB",
+    "price": null,
+    "location": {
+      "city": "",
+      "district": "",
+      "address": ""
+    },
+    "specs": {
+      "rooms": null,
+      "floor": null,
+      "totalFloors": null,
+      "area": {
+        "total": null,
+        "living": null,
+        "kitchen": null
+      },
+      "bathroomType": "Совмещенный",
+      "balcony": false,
+      "repair": "Без ремонта"
+    },
+    "description": "",
+    "images": [],
+    "createdAt": "2025-06-26T16:43:53.174Z"
+  },
+  {
+    "id": 1750956236936,
+    "dealType": "sale",
+    "propertyType": "Квартира",
+    "title": "",
+    "currency": "RUB",
+    "price": null,
+    "location": {
+      "city": "",
+      "district": "",
+      "address": ""
+    },
+    "specs": {
+      "rooms": null,
+      "floor": null,
+      "totalFloors": null,
+      "area": {
+        "total": null,
+        "living": null,
+        "kitchen": null
+      },
+      "bathroomType": "Совмещенный",
+      "balcony": false,
+      "repair": "Без ремонта"
+    },
+    "description": "",
+    "images": [],
+    "createdAt": "2025-06-26T16:43:56.936Z"
+  },
+  {
+    "id": 1750956278378,
+    "dealType": "sale",
+    "propertyType": "Квартира",
+    "title": "",
+    "currency": "RUB",
+    "price": null,
+    "location": {
+      "city": "",
+      "district": "",
+      "address": "январская 21 донецк"
+    },
+    "specs": {
+      "rooms": null,
+      "floor": null,
+      "totalFloors": null,
+      "area": {
+        "total": null,
+        "living": null,
+        "kitchen": null
+      },
+      "bathroomType": "Совмещенный",
+      "balcony": false,
+      "repair": "Без ремонта"
+    },
+    "description": "",
+    "images": [],
+    "createdAt": "2025-06-26T16:44:38.378Z"
+  },
+  {
+    "id": 1750956374352,
+    "dealType": "sale",
+    "propertyType": "Квартира",
+    "title": "",
+    "currency": "RUB",
+    "price": null,
+    "location": {
+      "city": "",
+      "district": "",
+      "address": "г. Донецк, ул. Январская улица"
+    },
+    "specs": {
+      "rooms": null,
+      "floor": null,
+      "totalFloors": null,
+      "area": {
+        "total": null,
+        "living": null,
+        "kitchen": null
+      },
+      "bathroomType": "Совмещенный",
+      "balcony": false,
+      "repair": "Без ремонта"
+    },
+    "description": "",
+    "images": [],
+    "createdAt": "2025-06-26T16:46:14.352Z"
+  },
+  {
+    "id": 1750956419251,
+    "dealType": "sale",
+    "propertyType": "Квартира",
+    "title": "",
+    "currency": "RUB",
+    "price": null,
+    "location": {
+      "city": "",
+      "district": "",
+      "address": "Донецк, Январская улица, 21"
+    },
+    "specs": {
+      "rooms": null,
+      "floor": null,
+      "totalFloors": null,
+      "area": {
+        "total": null,
+        "living": null,
+        "kitchen": null
+      },
+      "bathroomType": "Совмещенный",
+      "balcony": false,
+      "repair": "Без ремонта"
+    },
+    "description": "",
+    "images": [],
+    "createdAt": "2025-06-26T16:46:59.251Z"
+  },
+  {
+    "id": 1750956587989,
+    "dealType": "rent",
+    "propertyType": "Дом",
+    "title": "Курсовая, Дипломная, Студенческие работы",
+    "currency": "RUB",
+    "price": 900,
+    "location": {
+      "city": "",
+      "district": "",
+      "address": "Донецк, Январская улица, 21"
+    },
+    "specs": {
+      "rooms": 2,
+      "floor": 2,
+      "totalFloors": 2,
+      "area": {
+        "total": 2,
+        "living": 2,
+        "kitchen": 112
+      },
+      "bathroomType": "Раздельный",
+      "balcony": false,
+      "repair": "Евроремонт"
+    },
+    "description": "1цкйуцн3464енцее",
+    "images": [
+      "data/images/images-1750956587963-820090588.jpg",
+      "data/images/images-1750956587979-283684962.jpg"
+    ],
+    "createdAt": "2025-06-26T16:49:47.990Z"
+  }
+]
