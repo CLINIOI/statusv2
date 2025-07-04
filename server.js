@@ -16,6 +16,7 @@ const CHANNEL_ID = process.env.CHANNEL_ID;
 const app = express();
 
 // === Пути к папкам и файлам ===
+
 const htmlDir   = path.join(__dirname, 'html');
 const dataDir   = path.join(__dirname, 'data');
 const imagesDir = path.join(dataDir, 'images');
@@ -35,7 +36,7 @@ const storage = multer.diskStorage({
   }
 });
 const upload = multer({ storage });
-
+app.use('/css', express.static(path.join(__dirname, 'css')));
 // === Раздача статики ===
 // 1) HTML/CSS/JS из папки html/
 app.use(express.static(htmlDir));
@@ -238,7 +239,7 @@ bot.on('callback_query', async (query) => {
     await bot.answerCallbackQuery(query.id, { text: 'Ошибка реакции' });
   }
 });
-app.use(express.static('public'));
+
 // === Запуск сервера ===
 app.listen(PORT, () => {
   console.log(`🚀 Сервер запущен на http://localhost:${PORT}`);
