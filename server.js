@@ -42,6 +42,7 @@ app.use('/js', express.static(path.join(__dirname, 'js')));
 app.use('/assets', express.static(path.join(__dirname, 'assets')));
 app.use('/data', express.static(path.join(__dirname, 'data')));
 app.use('/telegram-form-sender', express.static(path.join(__dirname, 'telegram-form-sender')));
+app.use(express.static(path.join(__dirname, 'public')));
 
 // === HTML ===
 app.use('/', express.static(path.join(__dirname, 'html')));
