@@ -8,25 +8,24 @@ const fs          = require('fs');
 const multer      = require('multer');
 const TelegramBot = require('node-telegram-bot-api');
 
-// === Конфиг ===
 const PORT       = process.env.PORT     || 3000;
 const BOT_TOKEN  = process.env.BOT_TOKEN;
 const CHANNEL_ID = process.env.CHANNEL_ID;
 
 const app = express();
 
-// === Пути к папкам и файлам ===
+// === Пути к папкам ===
+const publicDir  = path.join(__dirname, 'public');
+const htmlDir    = path.join(publicDir, 'html');
+const dataDir    = path.join(publicDir, 'data');
+const imagesDir  = path.join(dataDir, 'images');
+const jsonFile   = path.join(dataDir, 'properties.json');
 
-const htmlDir   = path.join(__dirname, 'html');
-const dataDir   = path.join(__dirname, 'data');
-const imagesDir = path.join(dataDir, 'images');
-const jsonFile  = path.join(dataDir, 'properties.json');
-
-// === Убеждаемся, что папки существуют ===
-if (!fs.existsSync(dataDir))   fs.mkdirSync(dataDir,   { recursive: true });
+// === Убедимся, что нужные папки есть ===
+if (!fs.existsSync(dataDir))   fs.mkdirSync(dataDir, { recursive: true });
 if (!fs.existsSync(imagesDir)) fs.mkdirSync(imagesDir, { recursive: true });
 
-// === Настройка multer для загрузки изображений ===
+// === Multer: загрузка изображений ===
 const storage = multer.diskStorage({
   destination: (req, file, cb) => cb(null, imagesDir),
   filename:    (req, file, cb) => {
@@ -36,31 +35,21 @@ const storage = multer.diskStorage({
   }
 });
 const upload = multer({ storage });
-// === СТАТИКА ===
-app.use('/css', express.static(path.join(__dirname, 'css')));
-app.use('/js', express.static(path.join(__dirname, 'js')));
-app.use('/assets', express.static(path.join(__dirname, 'assets')));
-app.use('/data', express.static(path.join(__dirname, 'data')));
-app.use('/telegram-form-sender', express.static(path.join(__dirname, 'telegram-form-sender')));
-app.use(express.static(path.join(__dirname, 'public')));
 
-// === HTML ===
-app.use('/', express.static(path.join(__dirname, 'html')));
-// === Раздача статики ===
-// 1) HTML/CSS/JS из папки html/
-app.use(express.static(htmlDir));
-// 2) Данные и картинки из папки data/
+// === Статика ===
+app.use(express.static(publicDir));
 app.use('/data', express.static(dataDir));
 
+// === Body parser ===
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// === Роуты HTML-страниц ===
-app.get('/',            (req, res) => res.sendFile(path.join(htmlDir, 'index.html')));
+// === Роуты HTML ===
+app.get('/',            (req, res) => res.sendFile(path.join(publicDir, 'index.html')));
 app.get('/realty.html', (req, res) => res.sendFile(path.join(htmlDir, 'realty.html')));
 app.get('/test2.html',  (req, res) => res.sendFile(path.join(htmlDir, 'test2.html')));
 
-// === Обработка формы добавления недвижимости ===
+// === Обработка формы недвижимости ===
 app.post('/submit', upload.array('images'), (req, res) => {
   try {
     const {
@@ -73,7 +62,6 @@ app.post('/submit', upload.array('images'), (req, res) => {
       description
     } = req.body;
 
-    // Собираем пути картинок относительно корня проекта
     const images = req.files.map(f =>
       path.posix.join('data', 'images', path.basename(f.path))
     );
@@ -87,13 +75,13 @@ app.post('/submit', upload.array('images'), (req, res) => {
       price: price ? Number(price) : null,
       location: { city, district, address },
       specs: {
-        rooms:      rooms     ? Number(rooms)     : null,
-        floor:      floor     ? Number(floor)     : null,
-        totalFloors: totalFloors ? Number(totalFloors) : null,
+        rooms: Number(rooms) || null,
+        floor: Number(floor) || null,
+        totalFloors: Number(totalFloors) || null,
         area: {
-          total:   areaTotal   ? Number(areaTotal)   : null,
-          living:  areaLiving  ? Number(areaLiving)  : null,
-          kitchen: areaKitchen ? Number(areaKitchen) : null
+          total:   Number(areaTotal) || null,
+          living:  Number(areaLiving) || null,
+          kitchen: Number(areaKitchen) || null
         },
         bathroomType: bathroomType || null,
         balcony:      balcony === 'true',
@@ -104,7 +92,6 @@ app.post('/submit', upload.array('images'), (req, res) => {
       createdAt: new Date().toISOString()
     };
 
-    // Читаем, дополняем и сохраняем JSON
     const props = fs.existsSync(jsonFile)
       ? JSON.parse(fs.readFileSync(jsonFile, 'utf-8'))
       : [];
@@ -113,12 +100,12 @@ app.post('/submit', upload.array('images'), (req, res) => {
 
     res.json({ success: true, property });
   } catch (err) {
-    console.error('Ошибка сохранения объявления:', err);
-    res.status(500).json({ error: 'Ошибка при сохранении данных' });
+    console.error('Ошибка сохранения:', err);
+    res.status(500).json({ error: 'Ошибка при сохранении' });
   }
 });
 
-// === Утилиты и константы для Telegram ===
+// === Telegram Bot ===
 const MODE_TITLES = {
   1: 'ОСТАВИТЬ ОТЗЫВ',
   2: 'ПОЛУЧИТЬ КОНСУЛЬТАЦИЮ',
@@ -134,39 +121,25 @@ const MODE_HASHTAGS = {
   6: '#ДРУГОЙ_ВОПРОС'
 };
 const FIELD_LABELS = {
-  name:         'Имя',
-  contact:      'Контакт',
-  email:        'Электронная почта',
-  question:     'Вопрос',
-  review:       'Отзыв',
-  comments:     'Комментарии',
-  address:      'Адрес',
-  property_type:'Тип недвижимости',
-  deal_type:    'Тип сделки',
-  time:         'Время'
+  name: 'Имя', contact: 'Контакт', email: 'Электронная почта',
+  question: 'Вопрос', review: 'Отзыв', comments: 'Комментарии',
+  address: 'Адрес', property_type: 'Тип недвижимости', deal_type: 'Тип сделки', time: 'Время'
 };
 
 function escapeHtml(str = '') {
-  return str.toString()
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;');
+  return str.toString().replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 }
 function stars(rating) {
   const n = Math.max(0, Math.min(5, parseInt(rating, 10) || 0));
   return n > 0 ? '⭐'.repeat(n) : '—';
 }
 
-// === Инициализация Telegram-бота ===
 const bot = new TelegramBot(BOT_TOKEN, { polling: true });
 
-// === Обработка отправки данных в Telegram ===
 app.post('/api/sendTelegram', async (req, res) => {
   try {
     const { mode, data } = req.body;
-    if (!mode || typeof data !== 'object') {
-      return res.status(400).json({ error: 'Неправильный формат запроса' });
-    }
+    if (!mode || typeof data !== 'object') return res.status(400).json({ error: 'Неправильный формат' });
 
     const title     = (MODE_TITLES[mode] || `ФОРМА ${mode}`).toUpperCase();
     const tagMain   = MODE_HASHTAGS[mode] || '';
@@ -174,14 +147,7 @@ app.post('/api/sendTelegram', async (req, res) => {
     const tagCat    = `#актуально_${title.replace(/ /g, '_').toLowerCase()}`;
     const now       = new Date().toLocaleString('ru-RU', { hour12: false });
 
-    let text = [
-      `🔴 <b>АКТИВНО</b>`,
-      `${escapeHtml(tagMain)} ${escapeHtml(tagActual)} ${escapeHtml(tagCat)}`,
-      '',
-      `✉️ <b>Новая заявка: ${escapeHtml(title)}</b>`,
-      `🕒 <i>${escapeHtml(now)}</i>`,
-      ''
-    ].join('\n');
+    let text = `🔴 <b>АКТИВНО</b>\n${escapeHtml(tagMain)} ${escapeHtml(tagActual)} ${escapeHtml(tagCat)}\n\n✉️ <b>Новая заявка: ${escapeHtml(title)}</b>\n🕒 <i>${escapeHtml(now)}</i>\n`;
 
     for (const [key, value] of Object.entries(data)) {
       const v = value == null ? '' : value.toString();
@@ -193,51 +159,35 @@ app.post('/api/sendTelegram', async (req, res) => {
       }
     }
 
-    const opts = {
+    await bot.sendMessage(CHANNEL_ID, text, {
       parse_mode: 'HTML',
       reply_markup: {
-        inline_keyboard: [
-          [{ text: 'Отреагировал', callback_data: `reacted_${mode}` }]
-        ]
+        inline_keyboard: [[{ text: 'Отреагировал', callback_data: `reacted_${mode}` }]]
       }
-    };
-
-    await bot.sendMessage(CHANNEL_ID, text, opts);
+    });
     res.json({ success: true });
   } catch (err) {
-    console.error('Ошибка отправки в Telegram:', err);
-    res.status(500).json({ error: 'Внутренняя ошибка сервера' });
+    console.error('Ошибка Telegram:', err);
+    res.status(500).json({ error: 'Внутренняя ошибка' });
   }
 });
 
-// === Обработка inline-кнопок в Telegram ===
 bot.on('callback_query', async (query) => {
   try {
     const { id, data, message } = query;
-    if (!data.startsWith('reacted_')) {
-      return bot.answerCallbackQuery(id);
-    }
+    if (!data.startsWith('reacted_')) return bot.answerCallbackQuery(id);
 
-    const mode       = data.split('_')[1];
-    const title      = (MODE_TITLES[mode] || `ФОРМА ${mode}`).toUpperCase();
-    const tagMain    = MODE_HASHTAGS[mode] || '';
+    const mode = data.split('_')[1];
+    const title = (MODE_TITLES[mode] || `ФОРМА ${mode}`).toUpperCase();
+    const tagMain = MODE_HASHTAGS[mode] || '';
     const reactedTag = '#отреагирована';
-    const catTag     = `#отреагирована_${title.replace(/ /g, '_').toLowerCase()}`;
+    const catTag = `#отреагирована_${title.replace(/ /g, '_').toLowerCase()}`;
 
-    const parts = message.text.split('\n\n');
-    const body  = parts.slice(2).join('\n\n').trim();
-
-    const newText = [
-      '🟢 <b>ОТРЕАГИРОВАНА</b>',
-      escapeHtml(tagMain),
-      escapeHtml(reactedTag),
-      escapeHtml(catTag),
-      '',
-      body
-    ].join('\n');
+    const body = message.text.split('\n\n').slice(2).join('\n\n').trim();
+    const newText = `🟢 <b>ОТРЕАГИРОВАНА</b>\n${escapeHtml(tagMain)} ${escapeHtml(reactedTag)} ${escapeHtml(catTag)}\n\n${body}`;
 
     await bot.editMessageText(newText, {
-      chat_id:    message.chat.id,
+      chat_id: message.chat.id,
       message_id: message.message_id,
       parse_mode: 'HTML',
       reply_markup: { inline_keyboard: [] }
@@ -249,7 +199,7 @@ bot.on('callback_query', async (query) => {
   }
 });
 
-// === Запуск сервера ===
+// === Запуск ===
 app.listen(PORT, () => {
-  console.log(`🚀 Сервер запущен на http://localhost:${PORT}`);
+  console.log(`🚀 Сервер работает на http://localhost:${PORT}`);
 });
