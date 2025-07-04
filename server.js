@@ -238,7 +238,7 @@ bot.on('callback_query', async (query) => {
     await bot.answerCallbackQuery(query.id, { text: 'Ошибка реакции' });
   }
 });
-
+app.use(express.static('public'));
 // === Запуск сервера ===
 app.listen(PORT, () => {
   console.log(`🚀 Сервер запущен на http://localhost:${PORT}`);
