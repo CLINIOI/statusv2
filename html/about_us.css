@@ -1,0 +1,200 @@
+@charset "UTF-8";
+:root {
+  --index: calc(1vw + 1vh);
+}
+
+* {
+  padding: 0px;
+  margin: 0px;
+  border: none;
+}
+
+*,
+*::before,
+*::after {
+  /* исправлено */
+  box-sizing: border-box;
+}
+
+/* Links */
+a,
+a:link,
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+/* Common */
+aside,
+nav,
+footer,
+header,
+section,
+main {
+  display: block;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  font-size: inherit;
+  font-weight: inherit;
+  color: var(--color-text);
+}
+
+ul,
+ul li {
+  list-style: none;
+}
+
+img {
+  vertical-align: top;
+}
+
+img,
+svg {
+  max-width: 100%;
+  height: auto;
+}
+
+address {
+  font-style: normal;
+}
+
+/* Form */
+input,
+textarea,
+button,
+select {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  background-color: transparent;
+}
+
+input::-ms-clear {
+  display: none;
+}
+
+button,
+input[type=submit] {
+  display: inline-block;
+  box-shadow: none;
+  background-color: transparent;
+  background: none;
+  cursor: pointer;
+}
+
+input:focus,
+input:active,
+button:focus,
+button:active {
+  outline: none;
+}
+
+button::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+
+label {
+  cursor: pointer;
+  color: var(--color-text-g);
+}
+
+legend {
+  display: block;
+}
+
+html {
+  overflow-x: hidden;
+}
+
+body {
+  background-color: #f8f9fa;
+}
+
+body::-webkit-scrollbar {
+  width: 14px; /* ширина scrollbar */
+}
+body::-webkit-scrollbar-track {
+  background-color: #1D1D1B; /* цвет дорожки */
+  padding: 30px; /* добавляем отступ */
+}
+body::-webkit-scrollbar-thumb {
+  background-color: #E0B364; /* цвет плашки */
+  border-radius: 20px; /* закругления плашки */
+  border: 3px solid #1D1D1B; /* padding вокруг плашки */
+  -webkit-transition: background-color 0.3s ease, border-color 0.3s ease;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+body::-webkit-scrollbar-thumb:hover {
+  background-color: #fdb63c; /* цвет при наведении */
+}
+
+.offer-card {
+  background: #f8f9fa;
+  border-radius: 15px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.offer-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+.offer-card .icon {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 15px;
+  border-radius: 50%;
+  font-size: 24px;
+}
+.offer-card h5 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+.offer-card p {
+  color: #6c757d;
+  font-size: 14px;
+  margin: 0;
+}
+
+.offer-card h5 {
+  position: relative;
+  display: inline-block;
+}
+
+.offer-card h5::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  width: 0;
+  height: 3px;
+  background-color: #E0B364; /* можешь сменить на свой цвет */
+  transition: width 0.4s ease, left 0.4s ease;
+  border-radius: 50%;
+}
+
+.offer-card:hover h5::after {
+  width: 100%;
+  left: 0;
+}
+
+.bg-secondary, .bg-info, .bg-danger, .bg-success, .bg-warning, .bg-primary {
+  --bs-bg-opacity: 1;
+  background-color: #E0B364 !important;
+}/*# sourceMappingURL=about_us.css.map */
