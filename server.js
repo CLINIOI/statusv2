@@ -36,7 +36,15 @@ const storage = multer.diskStorage({
   }
 });
 const upload = multer({ storage });
+// === СТАТИКА ===
 app.use('/css', express.static(path.join(__dirname, 'css')));
+app.use('/js', express.static(path.join(__dirname, 'js')));
+app.use('/assets', express.static(path.join(__dirname, 'assets')));
+app.use('/data', express.static(path.join(__dirname, 'data')));
+app.use('/telegram-form-sender', express.static(path.join(__dirname, 'telegram-form-sender')));
+
+// === HTML ===
+app.use('/', express.static(path.join(__dirname, 'html')));
 // === Раздача статики ===
 // 1) HTML/CSS/JS из папки html/
 app.use(express.static(htmlDir));
