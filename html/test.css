@@ -526,4 +526,13 @@
 .justify-content-between {
   color: #1D1D1B;
   font-weight: bold;
+}
+
+@media (max-width: 767.98px) {
+  .detail-price {
+    margin-right: 30px;
+  }
+  .btn-outline-primary {
+    margin-right: 30px;
+  }
 }/*# sourceMappingURL=test.css.map */
