@@ -43,6 +43,8 @@ app.use('/assets', express.static(path.join(__dirname, 'assets')));
 app.use('/data', express.static(path.join(__dirname, 'data')));
 app.use('/telegram-form-sender', express.static(path.join(__dirname, 'telegram-form-sender')));
 app.use(express.static(path.join(__dirname, 'public')));
+const favicon = require('serve-favicon');
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 
 // === HTML ===
 app.use('/', express.static(path.join(__dirname, 'html')));
