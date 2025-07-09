@@ -1,0 +1,13 @@
+User-agent: *
+Disallow: /node_modules/
+Disallow: /test/
+Disallow: /telegram-form-sender/
+Disallow: /data/
+Disallow: /test.html
+Disallow: /test2.html
+Disallow: /test.css
+Disallow: /test.scss.map
+
+Allow: /
+
+Sitemap: https://statusdnr.ru/sitemap.xml
