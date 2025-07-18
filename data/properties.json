@@ -1,34 +1,4 @@
 [
-  {
-    "id": 1750769442591,
-    "dealType": "sale",
-    "propertyType": "Квартира",
-    "title": "цуке",
-    "currency": "USD",
-    "price": 333567,
-    "location": {
-      "city": "укерк",
-      "district": "цкер",
-      "address": "укек"
-    },
-    "specs": {
-      "rooms": 0,
-      "floor": 0,
-      "totalFloors": 0,
-      "area": {
-        "total": 0,
-        "living": 0,
-        "kitchen": 0
-      },
-      "bathroomType": "Совмещенный",
-      "balcony": "Балкон",
-      "repair": "Без ремонта"
-    },
-    "description": "уцекнекнлгнорпвыврекруекрукр",
-    "images": [
-      "data\\images\\images-1750769442582-53109552.png"
-    ],
-    "createdAt": "2025-06-24T12:50:42.591Z"
-  }
+  
  
 ]
